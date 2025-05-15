@@ -33,8 +33,13 @@ const readlineSync = require('readline-sync');
 let animals = [];
 let fees = [];
 function addAnimal(name, fee) {
-    if (!name || fee < 0) {
+    try{
+        if (!name || fee < 0) {
         throw new Error("Invalid animal name or adoption fee!");
+    }
+    console.log(`New animal and fee entered`)
+    } catch(err) {
+    console.log("Invalid input. Please enter a valid animal type and fee.");
     }
     animals.push(name);
     fees.push(fee);
@@ -74,6 +79,8 @@ Problems to Solve
 
 Invalid Input Errors:
   What happens if the user provides a negative adoption fee or leaves the name blank?
+    The code throws the custom error message but stops the program from running.
+
   What happens if the user tries to find the fee for an animal that hasn’t been added?
 
 Code Flow Problems:
